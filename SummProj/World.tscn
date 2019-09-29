@@ -11,16 +11,16 @@
 [sub_resource type="SpatialMaterial" id=3]
 albedo_color = Color( 0.454902, 0.580392, 0.921569, 1 )
 
-[sub_resource type="NavigationMesh" id=5]
+[sub_resource type="NavigationMesh" id=4]
 vertices = PoolVector3Array( -11.5075, 0.39, -22.6075, -22.6075, 0.39, -22.6075, -22.6075, 0.39, -11.5075, -22.6075, 0.39, 11.2925, -22.6075, 0.39, 22.6925, -11.5075, 0.39, 22.6925, 22.6925, 0.39, -11.5075, 22.6925, 0.39, -22.6075, 11.2925, 0.39, -22.6075, 11.2925, 0.39, 22.6925, 22.6925, 0.39, 22.6925, 22.6925, 0.39, 11.2925, -0.107517, 0.39, -22.6075, -11.5075, 0.39, -22.6075, -22.6075, 0.39, -11.5075, -22.6075, 0.39, -0.107517, -22.6075, 0.39, 11.2925, -11.5075, 0.39, 22.6925, -0.107517, 0.39, 22.6925, 22.6925, 0.39, -0.107517, 22.6925, 0.39, -11.5075, 11.2925, 0.39, -22.6075, -0.107517, 0.39, -22.6075, -0.107517, 0.39, 22.6925, 11.2925, 0.39, 22.6925, 22.6925, 0.39, 11.2925, -22.6075, 0.39, -0.107517, -22.6075, 0.39, 11.2925, -0.107517, 0.39, 22.6925, 22.6925, 0.39, 11.2925, 22.6925, 0.39, -0.107517, -0.107517, 0.39, -22.6075 )
 polygons = [ PoolIntArray( 2, 0, 1 ), PoolIntArray( 5, 3, 4 ), PoolIntArray( 8, 6, 7 ), PoolIntArray( 11, 9, 10 ), PoolIntArray( 15, 12, 14 ), PoolIntArray( 12, 13, 14 ), PoolIntArray( 18, 16, 17 ), PoolIntArray( 22, 19, 21 ), PoolIntArray( 19, 20, 21 ), PoolIntArray( 25, 23, 24 ), PoolIntArray( 31, 26, 30 ), PoolIntArray( 26, 29, 30 ), PoolIntArray( 26, 27, 29 ), PoolIntArray( 27, 28, 29 ) ]
 
-[sub_resource type="PlaneMesh" id=6]
+[sub_resource type="PlaneMesh" id=5]
 
-[sub_resource type="SpatialMaterial" id=7]
+[sub_resource type="SpatialMaterial" id=6]
 albedo_color = Color( 1, 0.541176, 0.541176, 1 )
 
-[sub_resource type="ConvexPolygonShape" id=4]
+[sub_resource type="ConvexPolygonShape" id=7]
 points = PoolVector3Array( 1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, -1 )
 
 [node name="World" type="Spatial"]
@@ -54,17 +54,17 @@ material/0 = SubResource( 3 )
 
 [node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="Navigation"]
 editor/display_folded = true
-navmesh = SubResource( 5 )
+navmesh = SubResource( 4 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Navigation/NavigationMeshInstance"]
 transform = Transform( 23.2075, 0, 0, 0, 23.2075, 0, 0, 0, 23.2075, 0, 0, 0 )
-mesh = SubResource( 6 )
-material/0 = SubResource( 7 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="StaticBody" type="StaticBody" parent="Navigation/NavigationMeshInstance/MeshInstance"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Navigation/NavigationMeshInstance/MeshInstance/StaticBody"]
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="IceFloor" parent="." instance=ExtResource( 3 )]
 transform = Transform( 0.995276, 0, 0, 0, 0.964496, 0, 0, 0, 2.56034, 6.59996, 1, 0 )
