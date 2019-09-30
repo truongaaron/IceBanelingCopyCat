@@ -13,20 +13,33 @@ var acceleration = Vector3(0,0,0)
 
 export var maxspeed = 4
 export var maxforce = .1
+var entered_ice = false
+var x = 0
+var y = 0 
+
+func _input(event):
+	if event is InputEventMouseButton:
+		x = event.position.x
+		y = event.position.y
+		seek(Vector3(x, y, 0))
+		update()
 
 func _process(delta):
 	pass
 
-func _physics_process(delta):	
+func _physics_process(delta):
 	if path_ind < path.size():
 		var move_vec = (path[path_ind] - global_transform.origin)
+		location = (path[path_ind] - global_transform.origin)
 		if move_vec.length() < 0.1:
 			path_ind += 1
 		else:
-			move_and_slide(move_vec.normalized() * move_speed, Vector3(0, 1, 0))
+			if entered_ice:
+				move_and_slide(location, Vector3(0, 1, 0))
+			else:
+				move_and_slide(move_vec.normalized() * move_speed, Vector3(0, 1, 0))
  
 func move_to(target_pos):
-	# seek(target_pos)
 	path = nav.get_simple_path(global_transform.origin, target_pos)
 	path_ind = 0
 
@@ -61,9 +74,10 @@ func limit(value, vec):
 
 func _on_IceFloor_body_entered(body):
 	if body.name == "Player":
-		move_speed = 5
+		entered_ice = true
 
 func _on_IceFloor_body_exited(body):
 	if body.name == "Player":
+		entered_ice = false
 		move_speed = 8
-
+		

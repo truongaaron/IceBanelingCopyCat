@@ -2,6 +2,7 @@ extends Spatial
 
 const ray_length = 1000
 onready var cam = $Camera
+var mouse_pos = Vector3(0,0,0)
 
 func _process(delta):
 	var m_pos = get_viewport().get_mouse_position()

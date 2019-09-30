@@ -26,7 +26,6 @@ points = PoolVector3Array( 1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, -1 )
 [node name="World" type="Spatial"]
 
 [node name="CamBase" type="Spatial" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 0.592086, 0.805875, 0, -0.805875, 0.592086, 0, 0, 0 )
 script = ExtResource( 1 )
 
@@ -42,6 +41,8 @@ editor/display_folded = true
 collision_layer = 3
 collision_mask = 3
 script = ExtResource( 2 )
+maxspeed = 20
+maxforce = 0.5
 
 [node name="CollisionShape" type="CollisionShape" parent="Navigation/Player"]
 transform = Transform( 0.493019, 0, 0, 0, 0.493019, 0, 0, 0, 0.493019, 0, 0.660079, 0 )
